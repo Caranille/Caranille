@@ -109,7 +109,7 @@ if (isset($_POST['itemId'])
                         $defenseBonus = $defenseBonus + $equipment['itemDefenseEffect'];
                         $defenseMagicBonus = $defenseMagicBonus + $equipment['itemDefenseMagicEffect'];
                         $wisdomBonus = $wisdomBonus + $equipment['itemWisdomEffect'];
-                        $prospectingBonus = $wisdomBonus + $equipment['itemProspectingEffect'];
+                        $prospectingBonus = $prospectingBonus + $equipment['itemProspectingEffect'];
                     }
                     $equipmentEquipedQuery->closeCursor();
     

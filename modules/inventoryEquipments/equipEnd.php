@@ -69,14 +69,14 @@ if (isset($_POST['itemId'])
                         while ($equipment = $equipmentQuery->fetch())
                         {
                             //On récupère les informations de l'inventaire
-                            $inventoryId = $equipment['inventoryId'];
+                            $equipmentInventoryId = $equipment['inventoryId'];
     
                             //On rend l'objet non équipé
                             $updateInventory = $bdd->prepare("UPDATE car_inventory SET
                             inventoryEquipped = 0
                             WHERE inventoryId = :inventoryId");
                             $updateInventory->execute(array(
-                            'inventoryId' => $inventoryId));
+                            'inventoryId' => $equipmentInventoryId));
                             $updateInventory->closeCursor();
                         }
                     }
@@ -84,10 +84,10 @@ if (isset($_POST['itemId'])
                     //On équippe maintenant l'équipement choisi
                     $updateInventory = $bdd->prepare("UPDATE car_inventory SET
                     inventoryEquipped = 1
-                    WHERE inventoryItemId = :itemId
+                    WHERE inventoryId = :inventoryId
                     AND inventoryCharacterId = :characterId");
                     $updateInventory->execute(array(
-                    'itemId' => $itemId,
+                    'inventoryId' => $inventoryId,
                     'characterId' => $characterId));
                     $updateInventory->closeCursor();
 
