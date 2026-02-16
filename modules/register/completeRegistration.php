@@ -92,20 +92,6 @@ if (isset($_POST['accountPseudo'])
                                     $ip = $_SERVER['REMOTE_ADDR'];
                                     $timeStamp = strtotime("now");
             
-                                    /*
-                                    Add account model
-                                    NULL, //accountId
-                                    :accountPseudo, //accountPseudo
-                                    :accountPassword, //accountPassword
-                                    :accountEmail, //accountEmail
-                                    '0', //accountAccess
-                                    '0', //accountStatus
-                                    'None', //accountReason
-                                    :accountLastAction, //accountLastAction
-                                    :accountLastConnection, //accountLastConnection
-                                    :accountIp, //accountLastIp
-                                    */
-            
                                     //Insertion du compte dans la base de donnée
                                     $addAccount = $bdd->prepare("INSERT INTO car_accounts VALUES(
                                     NULL,
@@ -140,114 +126,6 @@ if (isset($_POST['accountPseudo'])
                                         $accountId = $account['accountId'];
                                     }
                                     $accountQuery->closeCursor();
-
-                                    /*
-                                    //On génère un code de vérification
-                                    $codeAccountVerification = time();
-
-                                    $addCharacter = $bdd->prepare("INSERT INTO car_accounts_verifications VALUES(
-                                    NULL,
-                                    :accountId,
-                                    :accountEmail,
-                                    :codeAccountVerification)");
-                                    $addCharacter->execute([
-                                    'accountId' => $accountId,
-                                    'accountEmail' => $accountEmail,
-                                    'codeAccountVerification' => $codeAccountVerification]);
-                                    $addCharacter->closeCursor();
-
-                                    $from = "noreply@caranille.com";
-
-                                    $to = $accountEmail;
-                                    
-                                    $subject = "Caranille - Validation de votre inscription";
-                                    
-                                    $message = "Voici les informations à saisir dans \"Mon compte -> Finaliser\" afin de commencer à jouer\n\nEmail : $accountEmail\nCode : $codeAccountVerification\n\nBon jeu à vous";
-                                    
-                                    $headers = "From:" . $from;
-                                    
-                                    mail($to,$subject,$message, $headers);
-                                    
-                                    echo "L'email a été envoyé.";
-                                    */
-            
-                                    /*
-                                    Add character model
-                                    NULL, //characterId
-                                    :accountId, //characterAccountId
-                                    '0', //characterGuildId
-                                    :characterclasseId, //characterclasseId
-                                    '0', //characterPlaceId
-                                    'http://localhost/character.png', //characterPicture
-                                    :characterName, //characterName
-                                    '1', //characterLevel
-                                    :characterSex, //characterSex
-                                    '100', //characterHpMin
-                                    '100', //characterHpMax
-                                    '0', //characterHpSkillPoints
-                                    '0', //characterHpParchment
-                                    '0', //characterHpEquipments
-                                    '0', //characterHpGuild
-                                    '100', //characterHpTotal
-                                    '10', //characterMpMin
-                                    '10', //characterMpMax
-                                    '0', //characterMpSkillPoints
-                                    '0', //characterMpParchment
-                                    '0', //characterMpEquipments
-                                    '0', //characterMpGuild
-                                    '10', //characterMpTotal
-                                    '1', //characterStrength
-                                    '0', //characterStrengthSkillPoints
-                                    '0', //characterStrengthParchment
-                                    '0', //characterStrengthEquipments
-                                    '0', //characterStrengthGuild
-                                    '1', //characterStrengthTotal
-                                    '1', //characterMagic
-                                    '0', //characterMagicSkillPoints
-                                    '0', //characterMagicParchment
-                                    '0', //characterMagicEquipments
-                                    '0', //characterMagicGuild
-                                    '1', //characterMagicTotal
-                                    '0', //characterAgility
-                                    '0', //characterAgilitySkillPoints
-                                    '0', //characterAgilityParchment
-                                    '0', //characterAgilityEquipments
-                                    '0', //characterAgilityGuild
-                                    '0', //characterAgilityTotal
-                                    '0', //characterDefense
-                                    '0', //characterDefenseSkillPoints
-                                    '0', //characterDefenseParchment
-                                    '0', //characterDefenseEquipments
-                                    '0', //characterDefenseGuild
-                                    '0', //characterDefenseTotal
-                                    '0', //characterDefenseMagic
-                                    '0', //characterDefenseMagicSkillPoints
-                                    '0', //characterDefenseMagicParchment
-                                    '0', //characterDefenseMagicEquipments
-                                    '0', //characterDefenseMagicGuild
-                                    '0', //characterDefenseMagicTotal
-                                    '0', //characterWisdom
-                                    '0', //characterWisdomSkillPoints
-                                    '0', //characterWisdomParchment
-                                    '0', //characterWisdomEquipments
-                                    '0', //characterWisdomGuild
-                                    '0', //characterWisdomTotal
-                                    '0', //characterProspecting
-                                    '0', //characterProspectingSkillPoints
-                                    '0', //characterProspectingParchment
-                                    '0', //characterProspectingEquipments
-                                    '0', //characterProspectingGuild
-                                    '0', //characterProspectingTotal
-                                    '0', //characterArenaDefeate
-                                    '0', //characterArenaVictory
-                                    '0', //characterExperience
-                                    '0', //characterExperienceTotal
-                                    '0', //characterSkillPoints
-                                    '0', //characterGold
-                                    '1', //characterChapter
-                                    '0', //characterOnBattle
-                                    '1' //characterEnable
-                                    */
             
                                     $addCharacter = $bdd->prepare("INSERT INTO car_characters VALUES(
                                     NULL,
